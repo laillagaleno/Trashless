@@ -7,8 +7,63 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Material.019
+    second: {fileID: -1489042135305639923, guid: 1612ff98f975d5c949cff80ad58226ef, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: asfalto
     second: {fileID: 2100000, guid: e22b8914b915fd0939ecab3b64aa39ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: azul-claro
+    second: {fileID: -8948960085341223173, guid: 73aeccba9af222b3f8e193ca036b3594, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: branco
+    second: {fileID: -4402351807265975359, guid: 73aeccba9af222b3f8e193ca036b3594, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: casaSimples_D
+    second: {fileID: 7945979403788680254, guid: 1612ff98f975d5c949cff80ad58226ef, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cinza
+    second: {fileID: 1270278648817234664, guid: 73aeccba9af222b3f8e193ca036b3594, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grama
+    second: {fileID: -5784704998790918228, guid: 1612ff98f975d5c949cff80ad58226ef, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: laranja
+    second: {fileID: -2146721882451417453, guid: 1612ff98f975d5c949cff80ad58226ef, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: laranja-escuro
+    second: {fileID: -1489042135305639923, guid: 1612ff98f975d5c949cff80ad58226ef, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m
+    second: {fileID: -107042112042412576, guid: 1612ff98f975d5c949cff80ad58226ef, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: marron-claro
+    second: {fileID: 3280889131458180182, guid: 1612ff98f975d5c949cff80ad58226ef, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: verde-claro
+    second: {fileID: 4396907468332535936, guid: 1612ff98f975d5c949cff80ad58226ef, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

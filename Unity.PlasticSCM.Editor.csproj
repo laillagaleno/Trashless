@@ -284,8 +284,8 @@
      <Compile Include="Library/PackageCache/com.unity.collab-proxy@1.15.15/Editor/PlasticSCM/Inspector/InspectorAssetSelection.cs" />
      <Compile Include="Library/PackageCache/com.unity.collab-proxy@1.15.15/Editor/PlasticSCM/Views/CreateWorkspace/Dialogs/RepositoriesListView.cs" />
      <Compile Include="Library/PackageCache/com.unity.collab-proxy@1.15.15/Editor/PlasticSCM/AssemblyInfo.cs" />
-     <Compile Include="Library/PackageCache/com.unity.collab-proxy@1.15.15/Editor/PlasticSCM/Tool/ToolConstants.cs" />
      <Compile Include="Library/PackageCache/com.unity.collab-proxy@1.15.15/Editor/PlasticSCM/UI/Progress/DrawProgressForOperations.cs" />
+     <Compile Include="Library/PackageCache/com.unity.collab-proxy@1.15.15/Editor/PlasticSCM/Tool/ToolConstants.cs" />
      <Compile Include="Library/PackageCache/com.unity.collab-proxy@1.15.15/Editor/PlasticSCM/CollabMigration/MigrationProgressRender.cs" />
      <Compile Include="Library/PackageCache/com.unity.collab-proxy@1.15.15/Editor/PlasticSCM/Tool/FindTool.cs" />
      <Compile Include="Library/PackageCache/com.unity.collab-proxy@1.15.15/Editor/PlasticSCM/Views/Branch/Dialogs/RenameBranchDialog.cs" />
