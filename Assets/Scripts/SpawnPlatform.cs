@@ -18,9 +18,9 @@ public class SpawnPlatform : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform; //procura o obj na cena q tem a tag player
         for(int i = 0; i < platforms.Count; i++){
 
-            Transform p = Instantiate(platforms[i],new Vector3(0,0,i*117),transform.rotation).transform; //instancia as plataformas
+            Transform p = Instantiate(platforms[i],new Vector3(0,0,i*128),transform.rotation).transform; //instancia as plataformas
             currentPlatforms.Add(p); //add na lista
-            offset+=117;
+            offset+=128;
         }
         currentPlatformPoint = currentPlatforms[platformIndex].GetComponent<Platform>().point;
     } 
@@ -30,8 +30,10 @@ public class SpawnPlatform : MonoBehaviour
     void Update()
     {
        float distance = player.position.z - currentPlatformPoint.position.z; //distancia entre o player e o pont
-
-       if(distance>=59){
+       Debug.Log(distance);
+       
+    //use debug.log para printar a distancia do player ao passar do point
+       if(distance>=-0.3){
            Recycle(currentPlatforms[platformIndex].gameObject);
            platformIndex++;
 
@@ -45,6 +47,6 @@ public class SpawnPlatform : MonoBehaviour
     }
     public void Recycle(GameObject platform){
         platform.transform.position=new Vector3(0,0,offset);
-        offset+=117;
+        offset+=128;
     }
 }
