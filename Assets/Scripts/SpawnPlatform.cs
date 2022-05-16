@@ -30,7 +30,7 @@ public class SpawnPlatform : MonoBehaviour
     void Update()
     {
        float distance = player.position.z - currentPlatformPoint.position.z; //distancia entre o player e o pont
-       Debug.Log(distance);
+
        
     //use debug.log para printar a distancia do player ao passar do point
        if(distance>=-0.3){

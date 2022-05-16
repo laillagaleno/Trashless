@@ -13,6 +13,16 @@ public class Player : MonoBehaviour
     public float horizontalSpeed; //velocidade horizontal
     private bool isMovingLeft;
     private bool isMovingRight;
+
+    //colisão
+    public float rayRadius;
+    public LayerMask layer;
+
+    //animação de jump
+    public Animator jump;
+    public Animator die;
+    private bool isDie;
+
     void Start()
     {
          controller = GetComponent<CharacterController>();
@@ -23,8 +33,10 @@ public class Player : MonoBehaviour
         Vector3 direction = Vector3.forward * speed; //add 1 no eixo z
         //verificação se o personagem est tocando no chã
         if(controller.isGrounded){
-            //da um pulo
-            if(Input.GetKeyDown(KeyCode.Space)){
+            //da um pulo, a condição isDie desabilita a ação de pular se for true
+            if(Input.GetKeyDown(KeyCode.Space) && !isDie){
+                
+                jump.SetTrigger("jump"); //reconhece a condição jump
                 jumpVelocity = jumpHeight;
             } 
             //ir para a direita,se ambas forem vdd, ate certa posição
@@ -46,6 +58,8 @@ public class Player : MonoBehaviour
             }
         direction.y=jumpVelocity;
         controller.Move(direction * Time.deltaTime);
+
+        OnCollision();//deve ser chamado o tempo todo
     }
 
     //move o player pra esquerda
@@ -57,12 +71,33 @@ public class Player : MonoBehaviour
         isMovingLeft = false;
     }
 
-    //mover pra 
+    //mover pra direita
     IEnumerator RighMove(){
         for(float i = 0; i<2.5;i += 0.1f){
             controller.Move(Vector3.right * Time.deltaTime * horizontalSpeed);
             yield return null;
         }
         isMovingRight = false;
+    }
+
+
+    //identificar a colisão com algo
+    void OnCollision(){
+        //cria o raio/linha imaginaria que sai do Player/ determina o tamanho
+        RaycastHit hit; 
+        
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward),out hit,rayRadius, layer)&& !isDie){
+               //executa a condição die do Animator 
+                die.SetTrigger("die");
+
+                //zera os valores 
+                speed=0;
+                horizontalSpeed=0;
+                jumpHeight=0;
+                jumpVelocity=0;
+                Debug.Log("bateu!");
+                
+                isDie = true;
+        }
     }
 }
