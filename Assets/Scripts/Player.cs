@@ -23,9 +23,12 @@ public class Player : MonoBehaviour
     public Animator die;
     private bool isDie;
 
+    private GameController gc;
+
     void Start()
     {
          controller = GetComponent<CharacterController>();
+         gc = FindObjectOfType<GameController>(); //so posso fazer isso pq so tenho um gamecontroller na cena 
     }
     void Update()
     {
@@ -97,7 +100,14 @@ public class Player : MonoBehaviour
                 jumpVelocity=0;
                 Debug.Log("bateu!");
                 
+                Invoke("GameOver", 1f);
+
                 isDie = true;
         }
+    }
+
+//metodo pra chamar, pq para dar o RELLEY o nome precisa ser uma string
+    void GameOver(){
+        gc.ShowGameOver();//chamando outra função
     }
 }
