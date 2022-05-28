@@ -17,21 +17,22 @@ public class Player : MonoBehaviour
     //colisão
     public float rayRadius;
     public LayerMask layer;
+    public LayerMask trashLayer;
 
     //animação de jump
     public Animator jump;
     public Animator die;
-    private bool isDie;
+    public bool isDie;
 
+    //controler do game over
     private GameController gc;
 
-    void Start()
-    {
+
+    void Start(){
          controller = GetComponent<CharacterController>();
          gc = FindObjectOfType<GameController>(); //so posso fazer isso pq so tenho um gamecontroller na cena 
     }
-    void Update()
-    {
+    void Update(){
         //movimentação base do personagem
         Vector3 direction = Vector3.forward * speed; //add 1 no eixo z
         //verificação se o personagem est tocando no chã
@@ -63,6 +64,8 @@ public class Player : MonoBehaviour
         controller.Move(direction * Time.deltaTime);
 
         OnCollision();//deve ser chamado o tempo todo
+
+        
     }
 
     //move o player pra esquerda
@@ -104,10 +107,22 @@ public class Player : MonoBehaviour
 
                 isDie = true;
         }
+
+        //colisão ao bater nos lixos
+        //linha desenhada pra frente e pra cima
+        RaycastHit trashHit;
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out trashHit, rayRadius, trashLayer)){
+            //destroi ao bater no lixo
+            gc.AddTrash();
+            Destroy(trashHit.transform.gameObject);
+            
+        } 
     }
 
 //metodo pra chamar, pq para dar o RELLEY o nome precisa ser uma string
     void GameOver(){
         gc.ShowGameOver();//chamando outra função
     }
+
+
 }

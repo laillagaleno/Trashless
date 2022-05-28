@@ -36,10 +36,10 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets/Scripts/GameController.cs" />
      <Compile Include="Assets/Scripts/Platform.cs" />
      <Compile Include="Assets/Scripts/SpawnPlatform.cs" />
      <Compile Include="Assets/Scripts/Player.cs" />
-     <Compile Include="Assets/Scripts/GameController.cs" />
      <None Include="Assets/Fantasy Skybox FREE/Readme.txt" />
      <None Include="Assets/Fantasy Skybox FREE/ReleaseNotes.txt" />
     <Reference Include="UnityEngine">
