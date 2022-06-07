@@ -27,13 +27,10 @@ public class GameController : MonoBehaviour
     {
         if(!player.isDie){
             //velocidade da somatoria da pontuação
-            score += Time.deltaTime * 5f;
+            score += Time.deltaTime * player.speed;
             //precisa receber uma string, arredonda e converte
             scoreText.text = Mathf.Round(score).ToString() + "m";
         }
-
-
-       
         
     }
 

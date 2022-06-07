@@ -39,10 +39,14 @@ public class Player : MonoBehaviour
         if(controller.isGrounded){
             //da um pulo, a condição isDie desabilita a ação de pular se for true
             if(Input.GetKeyDown(KeyCode.Space) && !isDie){
-                
                 jump.SetTrigger("jump"); //reconhece a condição jump
                 jumpVelocity = jumpHeight;
+                jump.SetFloat("jumpVelocity", speed/jumpHeight);
             } 
+            // if(Input.GetKeyDown(KeyCode.DownArr ow)&& !isDie){
+
+
+            // }
             //ir para a direita,se ambas forem vdd, ate certa posição
             if(Input.GetKeyDown(KeyCode.RightArrow)&& transform.position.x<1f && !isMovingRight){
                 //chamada da co-rotina 
@@ -54,8 +58,9 @@ public class Player : MonoBehaviour
                 isMovingLeft = true;
                 //chamada da co-rotina 
                 StartCoroutine(LeftMove());
-
             }
+
+    
         }
         else{
                 jumpVelocity -= gravity; //se ele estiver no ar, vai cair

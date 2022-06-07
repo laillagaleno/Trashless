@@ -1,0 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ChangeLane : MonoBehaviour
+{
+    public void PositionLane()
+	{
+		int randomLane = Random.Range(-1, 2);
+        if(randomLane == -1){
+            randomLane = randomLane - 1;
+        }else if(randomLane == 1){
+            randomLane = randomLane + 1;
+        }
+		transform.position = new Vector3(randomLane, transform.position.y, transform.position.z);
+	}
+}
