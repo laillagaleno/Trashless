@@ -9,15 +9,15 @@ public class SpawnObstacles : MonoBehaviour
     public GameObject[] obstacles;
     public Vector2 numberOfObstacles;
 
-    public List<GameObject> newObstaclesPos;
+    public List<GameObject> newObstacles;
 
     void Start()
     {
         int newNumberObstacles = (int)Random.Range(numberOfObstacles.x, numberOfObstacles.y);
         for (int i = 0; i < newNumberObstacles; i++)
         {
-            newObstaclesPos.Add(Instantiate(obstacles[Random.Range(0,obstacles.Length)],transform));
-            newObstaclesPos[i].SetActive(false);
+            newObstacles.Add(Instantiate(obstacles[Random.Range(0,obstacles.Length)],transform));
+            newObstacles[i].SetActive(false);
         }  
         PositionObstacles(); 
     }
@@ -25,10 +25,10 @@ public class SpawnObstacles : MonoBehaviour
 
 //desabilita os obstaculos que são menores que 0 somente na plataforma 0(inicial)
     public void SetDisable(){
-        for (int i = 0; i < newObstaclesPos.Count; i++)
+        for (int i = 0; i < newObstacles.Count; i++)
         {
-            if(newObstaclesPos[i].transform.position.z < -40){
-                 newObstaclesPos[i].SetActive(false);
+            if(newObstacles[i].transform.position.z < -40){
+                 newObstacles[i].SetActive(false);
             }
         }
     }
@@ -36,9 +36,9 @@ public class SpawnObstacles : MonoBehaviour
 //posicionamento dos obstaculos
     public void PositionObstacles(){
         
-        float divPos = (64 / newObstaclesPos.Count); //metade do tamanho da plataforma dividida pela quantidade de obstaculos
+        float divPos = (64 / newObstacles.Count); //metade do tamanho da plataforma dividida pela quantidade de obstaculos
 
-        for (int i = 0; i < newObstaclesPos.Count; i++)
+        for (int i = 0; i < newObstacles.Count; i++)
         {
             //o posicionamento sempre vai ser de (n,n+1), n++
             float posZMin = divPos + divPos * i; 
@@ -51,12 +51,12 @@ public class SpawnObstacles : MonoBehaviour
                 randomZPos= randomZPos * -1;
             }
         
-            newObstaclesPos[i].transform.localPosition = new Vector3(0, 0, randomZPos);
-            newObstaclesPos[i].SetActive(true);
+            newObstacles[i].transform.localPosition = new Vector3(0, 0, randomZPos);
+            newObstacles[i].SetActive(true);
 
             //verifica se o obstaculo tem que mudar de posição no eixo x
-            if (newObstaclesPos[i].GetComponent<ChangeLane>() != null)
-                newObstaclesPos[i].GetComponent<ChangeLane>().PositionLane();
+            if (newObstacles[i].GetComponent<ChangeLane>() != null)
+                newObstacles[i].GetComponent<ChangeLane>().PositionLane();
         }
     }
 }

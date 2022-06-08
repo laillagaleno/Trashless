@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets/Scripts/ChangeLane.cs" />
+     <Compile Include="Assets/Scripts/SpawnTrash.cs" />
      <Compile Include="Assets/Scripts/GameController.cs" />
      <Compile Include="Assets/Scripts/SpawnObstacles.cs" />
      <Compile Include="Assets/Scripts/Platform.cs" />

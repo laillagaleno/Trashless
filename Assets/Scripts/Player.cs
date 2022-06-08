@@ -27,8 +27,14 @@ public class Player : MonoBehaviour
     //controler do game over
     private GameController gc;
 
+public Transform player;
+
 
     void Start(){
+
+        
+         player = GameObject.FindGameObjectWithTag("Player").transform;
+
          controller = GetComponent<CharacterController>();
          gc = FindObjectOfType<GameController>(); //so posso fazer isso pq so tenho um gamecontroller na cena 
     }
@@ -99,13 +105,17 @@ public class Player : MonoBehaviour
         
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward),out hit,rayRadius, layer)&& !isDie){
                //executa a condição die do Animator 
+
                 die.SetTrigger("die");
+                
+                player.transform.position = new Vector3(transform.position.x, 0, transform.position.z); //se colidir garante q iraá cair no chão 
 
                 //zera os valores 
                 speed=0;
                 horizontalSpeed=0;
                 jumpHeight=0;
                 jumpVelocity=0;
+
                 Debug.Log("bateu!");
                 
                 Invoke("GameOver", 1f);
@@ -118,8 +128,9 @@ public class Player : MonoBehaviour
         RaycastHit trashHit;
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out trashHit, rayRadius, trashLayer)){
             //destroi ao bater no lixo
-            gc.AddTrash();
-            Destroy(trashHit.transform.gameObject);
+            gc.AddTrash(); //add o ponto ao bater
+            trashHit.transform.gameObject.SetActive(false); //Desabilita 
+            // Destroy(trashHit.transform.gameObject); //destroi o lixo
             
         } 
     }

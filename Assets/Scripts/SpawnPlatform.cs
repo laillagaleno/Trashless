@@ -33,7 +33,11 @@ public class SpawnPlatform : MonoBehaviour
         distance = player.position.z - currentPlatformPoint.position.z; //distancia entre o player e o pont
         //use debug.log para printar a distancia do player ao passar do point
         if(distance>=-0.3){
+
            currentPlatforms[platformIndex].GetComponent<SpawnObstacles>().PositionObstacles(); //reposiciona os obstaculos da plataforma 
+           currentPlatforms[platformIndex].GetComponent<SpawnTrash>().PositionTrash(); //reposiciona os coletaveis da plataforma 
+           
+           
            Recycle(currentPlatforms[platformIndex].gameObject);
            platformIndex++;
            //recomeça a lista em 0 se todas as plataformas foram recicladas
@@ -43,12 +47,12 @@ public class SpawnPlatform : MonoBehaviour
            currentPlatformPoint = currentPlatforms[platformIndex].GetComponent<Platform>().point;
        }
 
-        //Chama a função desavilitar na plataforma com a tag
+        //Chama a função desabilitar na plataforma com a tag
         first.SetDisable();
     }
 
     public void Recycle(GameObject platform){
-        platform.transform.position=new Vector3(0,0,offset);
+        platform.transform.position = new Vector3(0,0,offset);
         offset+=128;   
     }
 }
