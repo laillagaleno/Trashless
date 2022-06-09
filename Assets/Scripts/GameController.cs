@@ -9,18 +9,25 @@ public class GameController : MonoBehaviour
 
     //pontuação de acordo com o tempo
     public float score;
-    public int scoreTrash;
+    public int scoreTrashP;
+    public int scoreTrashM;
+    public int scoreTrashV;
+    public int scoreTrashPL;
+    public int scoreTrashO;
 
     public Text scoreText;
-    public Text trashText;
+    public Text textTrashP;
+    public Text textTrashM;
+    public Text textTrashV;
+    public Text textTrashPL;
+    public Text textTrashO;
+
     private Player player;
-
-
+    int speedAdd = 500;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-
     }
 
     void Update()
@@ -30,8 +37,12 @@ public class GameController : MonoBehaviour
             score += Time.deltaTime * player.speed;
             //precisa receber uma string, arredonda e converte
             scoreText.text = Mathf.Round(score).ToString() + "m";
+
+            if(score > speedAdd){
+                player.speed = player.speed + 5f; 
+                speedAdd = speedAdd + 500;
+            }
         }
-        
     }
 
 //setando true para a tela de game pver aparecer
@@ -39,8 +50,29 @@ public class GameController : MonoBehaviour
         gameOver.SetActive(true);
     }
 
-    public void AddTrash(){
-        scoreTrash++;
-        trashText.text = scoreTrash.ToString();
+    public void AddTrashP(){
+        scoreTrashP++;
+        textTrashP.text = scoreTrashP.ToString();
     }
+
+     public void AddTrashM(){
+        scoreTrashM++;
+        textTrashM.text = scoreTrashM.ToString();
+    }
+
+     public void AddTrashPL(){
+        scoreTrashPL++;
+        textTrashPL.text = scoreTrashPL.ToString();
+    }
+
+     public void AddTrashV(){
+        scoreTrashV++;
+        textTrashV.text = scoreTrashV.ToString();
+    }
+
+     public void AddTrashO(){
+        scoreTrashO++;
+        textTrashO.text = scoreTrashO.ToString();
+    }
+
 }

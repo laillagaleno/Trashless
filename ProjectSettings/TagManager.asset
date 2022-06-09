@@ -6,6 +6,11 @@ TagManager:
   tags:
   - point
   - firstPlatform
+  - paper
+  - glass
+  - metal
+  - plastic
+  - organic
   layers:
   - Default
   - TransparentFX
