@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
     public GameObject gameOver;
 
     //pontuação de acordo com o tempo
-    public float score;
+    public float scoreDist;
     public int scoreTrashP;
     public int scoreTrashM;
     public int scoreTrashV;
@@ -23,7 +23,8 @@ public class GameController : MonoBehaviour
     public Text textTrashO;
 
     private Player player;
-    int speedAdd = 500;
+    private float speedAux; 
+    private float speedConst = 0.01f;
 
     void Start()
     {
@@ -34,14 +35,23 @@ public class GameController : MonoBehaviour
     {
         if(!player.isDie){
             //velocidade da somatoria da pontuação
-            score += Time.deltaTime * player.speed;
+            scoreDist += Time.deltaTime * player.speed;
             //precisa receber uma string, arredonda e converte
-            scoreText.text = Mathf.Round(score).ToString() + "m";
+            scoreText.text = Mathf.Round(scoreDist).ToString() + "m";
 
-            if(score > speedAdd){
-                player.speed = player.speed + 5f; 
-                speedAdd = speedAdd + 500;
+
+            speedAux = speedConst*scoreDist + 15;
+            if(speedAux > 40){
+                speedAux = 40;
             }
+
+            player.speed = speedAux;
+
+            
+            // if(score > speedAdd){
+            //     player.speed = player.speed + 5f; 
+            //     speedAdd = speedAdd + 500;
+            // }
         }
     }
 

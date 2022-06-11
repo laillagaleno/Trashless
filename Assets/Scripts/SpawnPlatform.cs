@@ -32,8 +32,8 @@ public class SpawnPlatform : MonoBehaviour
    void Update() {
         distance = player.position.z - currentPlatformPoint.position.z; //distancia entre o player e o pont
         //use debug.log para printar a distancia do player ao passar do point
-        if(distance>=-0.3){
-
+        if(distance>=-0.5){
+            Debug.Log(distance);
            currentPlatforms[platformIndex].GetComponent<SpawnObstacles>().PositionObstacles(); //reposiciona os obstaculos da plataforma 
            currentPlatforms[platformIndex].GetComponent<SpawnTrash>().PositionTrash(); //reposiciona os coletaveis da plataforma 
            

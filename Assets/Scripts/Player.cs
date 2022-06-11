@@ -5,18 +5,17 @@ public class Player : MonoBehaviour
 {
     CharacterController controller; //armazena o componente Capsular Controller no Player
     public float speed; //velocidade 
-
-    public float jumpHeight; //força do pulo
-    public float gravity; //gravidade
     private float jumpVelocity; 
+    public float jumpHeight; //força do pulo
+    private float jumpStart;
+    public float slideHeight;
+    private float slideStart;
 
+    public float gravity; //gravidade
 
     public float horizontalSpeed; //velocidade horizontal
     private bool isMovingLeft;
     private bool isMovingRight;
-    private bool isJump;
-    private bool isSlide;
-
 
     //colisão
     public float rayRadius;
@@ -25,7 +24,11 @@ public class Player : MonoBehaviour
 
     //animação de jump
     public Animator jump;
+    public Animator slide;
     public Animator die;
+
+    public bool isJump = false;
+    public bool isSlide = false;
     public bool isDie;
 
     //controler do game over
@@ -46,17 +49,13 @@ public class Player : MonoBehaviour
         Vector3 direction = Vector3.forward * speed; //add 1 no eixo z
         //verificação se o personagem esta tocando no chão
         if(controller.isGrounded){
-
             //da um pulo, a condição isDie desabilita a ação de pular se for true
-            if(Input.GetKeyDown(KeyCode.Space) && !isDie){
-                jump.SetTrigger("jump"); //reconhece a condição jump
-                jumpVelocity = jumpHeight;
-                jump.SetFloat("jumpVelocity", speed/jumpHeight);
+            if(Input.GetKeyDown(KeyCode.Space)){
+                Jump();
             } 
 
-            if(Input.GetKeyDown(KeyCode.DownArrow)&& !isDie){
-                // controller.
-
+            if(Input.GetKeyDown(KeyCode.DownArrow)){
+                Slide();
             }
 
             //ir para a direita,se ambas forem vdd, ate certa posição
@@ -76,14 +75,54 @@ public class Player : MonoBehaviour
         else{
                 jumpVelocity -= gravity; //se ele estiver no ar, vai cair
             }
+
+        if(isJump){
+            float tempJump = (transform.position.z - jumpStart) / jumpHeight;
+            if(tempJump >=0.5f){
+                isJump = false; 
+            }
+
+        }
+        if(isSlide){
+            float tempSlide = (transform.position.z - slideStart) / slideHeight;
+            if(tempSlide >= 1f){
+                controller.center = new Vector3(0,1,0);
+                controller.height = 2.5f;
+                controller.radius= 1f;
+                 
+                isSlide=false;
+            }
+        }
         direction.y=jumpVelocity;
         controller.Move(direction * Time.deltaTime);
         OnCollision();//deve ser chamado o tempo todo
     }
 
+    void Jump(){
+        if(!isJump && !isDie && !isSlide){
+                jumpStart = transform.position.z;
+                jump.SetTrigger("jump"); //reconhece a condição jump
+                jumpVelocity = jumpHeight;
+                jump.SetFloat("animVelocity", speed/jumpHeight);
+                isJump = true;
+        }
+    }
+
+    void Slide(){
+        if(!isJump && !isSlide && !isDie){
+            slideStart = transform.position.z;
+            slide.SetTrigger("slide"); //reconhece a condição slide
+            jump.SetFloat("animVelocity", speed/slideHeight);
+            controller.center = new Vector3(0,0,0);
+            controller.height = 0;
+            controller.radius= 0.3f;
+            isSlide = true;
+        }
+    }
+
     //move o player pra esquerda
     IEnumerator LeftMove(){
-        for(float i = 0; i < 2.5; i+= 0.1f){
+        for(float i = 0; i < 2.4; i+= 0.1f){
             controller.Move(Vector3.left * Time.deltaTime * horizontalSpeed);
             yield return null;
         }
@@ -92,13 +131,12 @@ public class Player : MonoBehaviour
 
     //mover pra direita
     IEnumerator RighMove(){
-        for(float i = 0; i< 2.5;i += 0.1f){
+        for(float i = 0; i< 2.4;i += 0.1f){
             controller.Move(Vector3.right * Time.deltaTime * horizontalSpeed);
             yield return null;
         }
         isMovingRight = false;
     }
-
 
     //identificar a colisão com algo
     void OnCollision(){
@@ -113,7 +151,6 @@ public class Player : MonoBehaviour
                 horizontalSpeed=0;
                 jumpHeight=0;
                 jumpVelocity=0;
-                Debug.Log("bateu!");
                 Invoke("GameOver", 1f);
                 isDie = true;
         }

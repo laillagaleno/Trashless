@@ -38,7 +38,7 @@ public class SpawnTrash : MonoBehaviour
 			newTrash[i].transform.localPosition = new Vector3(transform.position.x, transform.position.y, randomZPos);
 			newTrash[i].SetActive(true);
 			newTrash[i].GetComponent<ChangeLane>().PositionLane();
-			minZPos = randomZPos + 1;
+			minZPos = randomZPos + 2;
 		}
 	}
 }
