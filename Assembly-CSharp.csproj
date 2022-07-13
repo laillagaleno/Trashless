@@ -38,6 +38,7 @@
   <ItemGroup>
      <Compile Include="Assets/Scripts/ChangeLane.cs" />
      <Compile Include="Assets/Scripts/SpawnTrash.cs" />
+     <Compile Include="Assets/Scripts/UIController.cs" />
      <Compile Include="Assets/Scripts/GameController.cs" />
      <Compile Include="Assets/Scripts/SpawnObstacles.cs" />
      <Compile Include="Assets/Scripts/Platform.cs" />
@@ -46,6 +47,9 @@
      <Compile Include="Assets/Scripts/WorldCurver.cs" />
      <None Include="Assets/Fantasy Skybox FREE/Readme.txt" />
      <None Include="Assets/Fantasy Skybox FREE/ReleaseNotes.txt" />
+     <None Include="Assets/Layout/Fonts/Mirza/OFL.txt" />
+     <None Include="Assets/Layout/Fonts/Jockey_One/OFL.txt" />
+     <None Include="Assets/Layout/Fonts/Ravi_Prakash/OFL.txt" />
     <Reference Include="UnityEngine">
         <HintPath>/home/laillagaleno/Unity/Hub/Editor/2020.3.33f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

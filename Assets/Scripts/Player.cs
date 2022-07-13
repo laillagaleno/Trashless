@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Player : MonoBehaviour
 {
+
     CharacterController controller; //armazena o componente Capsular Controller no Player
     public float speed; //velocidade 
+    private float minSpeed = 10f;
+
+
     private float jumpVelocity; 
     public float jumpHeight; //força do pulo
     private float jumpStart;
@@ -19,8 +23,13 @@ public class Player : MonoBehaviour
 
     //colisão
     public float rayRadius;
-    public LayerMask layer;
+    public LayerMask obstacleLayer;
     public LayerMask trashLayer;
+    public int maxLife = 2; //quantidade de vidas
+    public int currentLife; //vidas atuais
+    public float invicibleTime;
+    public bool invincible = false;
+
 
     //animação de jump
     public Animator jump;
@@ -35,6 +44,9 @@ public class Player : MonoBehaviour
     private GameController gc;
 
     public Transform player;
+    public GameObject modelPlay;
+    private UIController uiController;
+
 
 
     void Start(){
@@ -42,6 +54,9 @@ public class Player : MonoBehaviour
 
          controller = GetComponent<CharacterController>();
          gc = FindObjectOfType<GameController>(); //so posso fazer isso pq so tenho um gamecontroller na cena 
+
+        currentLife = maxLife; 
+        uiController = FindObjectOfType<UIController>();
     }
 
     void Update(){
@@ -96,6 +111,8 @@ public class Player : MonoBehaviour
         direction.y=jumpVelocity;
         controller.Move(direction * Time.deltaTime);
         OnCollision();//deve ser chamado o tempo todo
+        
+        
     }
 
     void Jump(){
@@ -122,38 +139,56 @@ public class Player : MonoBehaviour
 
     //move o player pra esquerda
     IEnumerator LeftMove(){
-        for(float i = 0; i < 2.4; i+= 0.1f){
-            controller.Move(Vector3.left * Time.deltaTime * horizontalSpeed);
-            yield return null;
+        if(!isDie){
+            for(float i = 0; i < 2.4; i+= 0.1f){
+                controller.Move(Vector3.left * Time.deltaTime * horizontalSpeed);
+                yield return null;
+            }
+            isMovingLeft = false;
         }
-        isMovingLeft = false;
+        
     }
 
     //mover pra direita
     IEnumerator RighMove(){
-        for(float i = 0; i< 2.4;i += 0.1f){
-            controller.Move(Vector3.right * Time.deltaTime * horizontalSpeed);
-            yield return null;
+        if(!isDie){
+            for(float i = 0; i< 2.4;i += 0.1f){
+                controller.Move(Vector3.right * Time.deltaTime * horizontalSpeed);
+                yield return null;
+            }
+            isMovingRight = false;
         }
-        isMovingRight = false;
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+        {
+            if(invincible)
+                return;
+
+            if(other.CompareTag("Obstacle")){
+                uiController.UpdateLives(currentLife);
+
+                // executa a condição die do Animator 
+                die.SetTrigger("die");
+                player.transform.position = new Vector3(transform.position.x, 0, transform.position.z); //se colidir garante q iraá cair no chão 
+                isDie=true;
+
+                speed = 0;
+                currentLife--;
+
+                    if(currentLife <= 0 ){
+                        Invoke("GameOver", 1f);
+                    }else{
+                        StartCoroutine(Blinking(invicibleTime));
+                    }
+                    
+            }
+            
     }
 
     //identificar a colisão com algo
     void OnCollision(){
-        //cria o raio/linha imaginaria que sai do Player/ determina o tamanho
-        RaycastHit hit; 
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward),out hit,rayRadius, layer)&& !isDie){
-               //executa a condição die do Animator 
-                die.SetTrigger("die");
-                player.transform.position = new Vector3(transform.position.x, 0, transform.position.z); //se colidir garante q iraá cair no chão 
-                //zera os valores 
-                speed=0;
-                horizontalSpeed=0;
-                jumpHeight=0;
-                jumpVelocity=0;
-                Invoke("GameOver", 1f);
-                isDie = true;
-        }
         //colisão ao bater nos lixos
         //linha desenhada pra frente e pra cima
         RaycastHit trashHit;
@@ -183,6 +218,36 @@ public class Player : MonoBehaviour
             // Destroy(trashHit.transform.gameObject); //destroi o lixo
         } 
     }
+
+
+//corrotina de invensivel
+IEnumerator Blinking(float time){
+    invincible = true;
+    float timer = 0;
+    float currentBlink = 1f;
+    float lastBlink = 0;
+    float blinkPeriod=0.1f;
+    bool enabled = false;
+    yield return new WaitForSeconds(1f);
+    speed = minSpeed;
+    isDie=false;
+
+    while (timer<time && invincible){
+        modelPlay.SetActive(enabled);
+        yield return null;
+
+        timer += Time.deltaTime;
+        lastBlink += Time.deltaTime;
+
+        if(blinkPeriod < lastBlink){
+            lastBlink = 0;
+            currentBlink = 1f - currentBlink;
+            enabled = !enabled;
+        }
+    }
+    modelPlay.SetActive(true);
+    invincible = false;
+}
 
 //metodo pra chamar, pq para dar o RELLEY o nome precisa ser uma string
     void GameOver(){

@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; //acessar canva, textos, imagens etc
+using UnityEngine.SceneManagement; //permite passar as cenas
 
 public class GameController : MonoBehaviour
 {
+    public static GameController gc;
     public GameObject gameOver;
+    public GameObject painelPoint;
 
     //pontuação de acordo com o tempo
     public float scoreDist;
@@ -38,8 +41,7 @@ public class GameController : MonoBehaviour
             scoreDist += Time.deltaTime * player.speed;
             //precisa receber uma string, arredonda e converte
             scoreText.text = Mathf.Round(scoreDist).ToString() + "m";
-
-
+            
             speedAux = speedConst*scoreDist + 15;
             if(speedAux > 40){
                 speedAux = 40;
@@ -55,9 +57,22 @@ public class GameController : MonoBehaviour
         }
     }
 
-//setando true para a tela de game pver aparecer
+
+    public void StartMenu(){
+        SceneManager.LoadScene("Menu");
+    }
+
+//Chamando a tela de game pver
     public void ShowGameOver(){
-        gameOver.SetActive(true);
+        // gameOver.SetActive(true);
+        // painelPoint.SetActive(false);
+        // Application.LoadLevel("GameOver");
+        SceneManager.LoadScene("GameOver");
+    }
+
+//passar para a proxima cena
+    public void ButtonShowScena(string nameScena){
+        SceneManager.LoadScene(nameScena);
     }
 
     public void AddTrashP(){

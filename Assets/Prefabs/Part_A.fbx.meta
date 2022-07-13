@@ -9,6 +9,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: asfalto.001
     second: {fileID: 2100000, guid: e22b8914b915fd0939ecab3b64aa39ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grama
+    second: {fileID: 2100000, guid: 0141e12fb3dc06e0a9a6dc9571675221, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grama.001
+    second: {fileID: 2100000, guid: 0141e12fb3dc06e0a9a6dc9571675221, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

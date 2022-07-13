@@ -4,5 +4,26 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: a96162a5549bf319a9931163ac1abb6f
+  - enabled: 1
+    path: Assets/Scenes/Missions.unity
+    guid: a5a22c5b46fd5a91a90f40ee41700021
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 179f002f347ea25b19ed886c0a600077
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: d3180a3227c1b7db281251ff60b93fc7
+  - enabled: 1
+    path: Assets/Scenes/Quiz.unity
+    guid: 5ff81d5a90dcc99809e25825c5c90c52
+  - enabled: 1
+    path: Assets/Scenes/Recycle.unity
+    guid: 76f8f072db2ad96948aafd84cc209523
+  - enabled: 1
+    path: Assets/Scenes/Poits.unity
+    guid: 17d4172be4e99ef0594d43133c7f9571
   m_configObjects: {}
