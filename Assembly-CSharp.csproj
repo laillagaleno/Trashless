@@ -40,11 +40,15 @@
      <Compile Include="Assets/Scripts/SpawnTrash.cs" />
      <Compile Include="Assets/Scripts/UIController.cs" />
      <Compile Include="Assets/Scripts/GameController.cs" />
+     <Compile Include="Assets/Scripts/AnswerController.cs" />
+     <Compile Include="Assets/Scripts/MenuController.cs" />
      <Compile Include="Assets/Scripts/SpawnObstacles.cs" />
+     <Compile Include="Assets/Scripts/NavScenes.cs" />
      <Compile Include="Assets/Scripts/Platform.cs" />
      <Compile Include="Assets/Scripts/SpawnPlatform.cs" />
      <Compile Include="Assets/Scripts/Player.cs" />
      <Compile Include="Assets/Scripts/WorldCurver.cs" />
+     <Compile Include="Assets/Scripts/RecycleController.cs" />
      <None Include="Assets/Fantasy Skybox FREE/Readme.txt" />
      <None Include="Assets/Fantasy Skybox FREE/ReleaseNotes.txt" />
      <None Include="Assets/Layout/Fonts/Mirza/OFL.txt" />

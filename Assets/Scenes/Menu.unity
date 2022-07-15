@@ -446,7 +446,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 408164734}
-        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_TargetAssemblyTypeName: NavScenes, Assembly-CSharp
         m_MethodName: ButtonShowScena
         m_Mode: 5
         m_Arguments:
@@ -781,7 +781,7 @@ GameObject:
   - component: {fileID: 408164735}
   - component: {fileID: 408164734}
   m_Layer: 0
-  m_Name: GameController
+  m_Name: NavScenes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -796,23 +796,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 408164733}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d20a8dc80115ccd7ab27cd16cd2052a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 817be66dae7c71654a3672175f82e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOver: {fileID: 0}
-  painelPoint: {fileID: 0}
-  scoreDist: 0
-  scoreTrashP: 0
-  scoreTrashM: 0
-  scoreTrashV: 0
-  scoreTrashPL: 0
-  scoreTrashO: 0
-  scoreText: {fileID: 0}
-  textTrashP: {fileID: 0}
-  textTrashM: {fileID: 0}
-  textTrashV: {fileID: 0}
-  textTrashPL: {fileID: 0}
-  textTrashO: {fileID: 0}
 --- !u!4 &408164735
 Transform:
   m_ObjectHideFlags: 0
@@ -916,7 +902,6 @@ GameObject:
   m_Component:
   - component: {fileID: 509567074}
   - component: {fileID: 509567073}
-  - component: {fileID: 509567075}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1000,32 +985,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &509567075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509567072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d20a8dc80115ccd7ab27cd16cd2052a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameOver: {fileID: 0}
-  painelPoint: {fileID: 0}
-  scoreDist: 0
-  scoreTrashP: 0
-  scoreTrashM: 0
-  scoreTrashV: 0
-  scoreTrashPL: 0
-  scoreTrashO: 0
-  scoreText: {fileID: 0}
-  textTrashP: {fileID: 0}
-  textTrashM: {fileID: 0}
-  textTrashV: {fileID: 0}
-  textTrashPL: {fileID: 0}
-  textTrashO: {fileID: 0}
 --- !u!1 &628705137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1494,7 +1453,6 @@ GameObject:
   - component: {fileID: 1152158557}
   - component: {fileID: 1152158556}
   - component: {fileID: 1152158555}
-  - component: {fileID: 1152158558}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1550,32 +1508,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1152158558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1152158554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d20a8dc80115ccd7ab27cd16cd2052a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameOver: {fileID: 0}
-  painelPoint: {fileID: 0}
-  scoreDist: 0
-  scoreTrashP: 0
-  scoreTrashM: 0
-  scoreTrashV: 0
-  scoreTrashPL: 0
-  scoreTrashO: 0
-  scoreText: {fileID: 0}
-  textTrashP: {fileID: 0}
-  textTrashM: {fileID: 0}
-  textTrashV: {fileID: 0}
-  textTrashPL: {fileID: 0}
-  textTrashO: {fileID: 0}
 --- !u!1 &1214947017
 GameObject:
   m_ObjectHideFlags: 0

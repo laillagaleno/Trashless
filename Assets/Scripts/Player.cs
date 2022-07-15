@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class Player : MonoBehaviour
 {
 
     CharacterController controller; //armazena o componente Capsular Controller no Player
     public float speed; //velocidade 
     private float minSpeed = 10f;
-
-
+    
     private float jumpVelocity; 
     public float jumpHeight; //força do pulo
     private float jumpStart;
@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
     public Transform player;
     public GameObject modelPlay;
     private UIController uiController;
+ 
 
 
 
@@ -173,15 +174,14 @@ public class Player : MonoBehaviour
                 die.SetTrigger("die");
                 player.transform.position = new Vector3(transform.position.x, 0, transform.position.z); //se colidir garante q iraá cair no chão 
                 isDie=true;
-
                 speed = 0;
                 currentLife--;
 
-                    if(currentLife <= 0 ){
-                        Invoke("GameOver", 1f);
-                    }else{
-                        StartCoroutine(Blinking(invicibleTime));
-                    }
+                if(currentLife <= 0 ){
+                    Invoke("GameOver", 1f);
+                }else{
+                    StartCoroutine(Blinking(invicibleTime));
+                }
                     
             }
             
@@ -198,22 +198,7 @@ public class Player : MonoBehaviour
             string trashTag = trashHit.transform.gameObject.tag; //aramzena o nome da tag do lixo em contato
            
             //verifica qual tipo de lixo foi recolhido e adiciona o ponto
-            if(trashTag == "paper"){
-                gc.AddTrashP();
-            }
-            if(trashTag == "glass"){
-                gc.AddTrashV();
-            }
-            if(trashTag == "plastic"){
-                gc.AddTrashPL();
-            }
-            if(trashTag == "organic"){
-                gc.AddTrashO();
-            }
-            if(trashTag == "metal"){
-                gc.AddTrashM();
-            }
-
+            uiController.AddTash(trashTag);
             trashHit.transform.gameObject.SetActive(false); //Desabilita 
             // Destroy(trashHit.transform.gameObject); //destroi o lixo
         } 
