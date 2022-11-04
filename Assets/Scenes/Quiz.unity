@@ -923,7 +923,7 @@ MonoBehaviour:
   - Azul
   - Vermelho
   - "S\xE3o corretas apenas as afirmativas 1, 2 e 5"
-  timeMax: 50
+  timeMax: 60
 --- !u!4 &1209140837
 Transform:
   m_ObjectHideFlags: 0

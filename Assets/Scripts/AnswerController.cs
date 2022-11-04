@@ -30,10 +30,6 @@ public class AnswerController : MonoBehaviour
     public float timeMax;
     private float time;
 
-
-
-
-
     void Start(){
         isAnswer = false;
         time = timeMax;
@@ -57,26 +53,29 @@ public class AnswerController : MonoBehaviour
             case "A":
                 if(optionsA[idQuestion] == answers[idQuestion]){
                    isAnswer = true;
-                    Debug.Log("CLIQUEI NO A");
-                }else{
-                    
-                    Debug.Log("CLIQUEI NO A");
                 }
 
                 break;
             case "B":
 
                 if(optionsB[idQuestion] == answers[idQuestion]){
-                    Debug.Log("CLIQUEI NO B");
                    isAnswer = true;
-
                 }
                 break;
             case "C":
                 if(optionsC[idQuestion] == answers[idQuestion]){
-                    Debug.Log("CLIQUEI NO C");
                    isAnswer = true;
+                }
+                break;
 
+            case "D":
+                if(optionsC[idQuestion] == answers[idQuestion]){
+                    isAnswer = true;
+                }
+                break;
+            case "E":
+                if(optionsC[idQuestion] == answers[idQuestion]){
+                    isAnswer = true;
                 }
                 break;
             default:
@@ -90,7 +89,7 @@ public class AnswerController : MonoBehaviour
     void Update(){
         time -= Time.deltaTime;
         UpdateTimer();
-        if(time <= 0 || !!isAnswer){
+        if(time < 1 || !!isAnswer){
             Invoke("GameOver", 1f);
         }
     }

@@ -6,7 +6,17 @@ using UnityEngine.SceneManagement; //permite passar as cenas
 
 public class NavScenes : MonoBehaviour
 {
-    public void ButtonShowScena(string nameScena){
-        SceneManager.LoadScene(nameScena);
+    public AudioSource audioSourceClick;
+    public string nameScena;
+
+    public void ButtonShowScena(string scene){
+        audioSourceClick.Play();
+        nameScena = scene;
+        StartCoroutine("ShowScener");
+    }
+
+    private IEnumerator ShowScener(){
+        yield return new WaitForSeconds(0.5f);
+          SceneManager.LoadScene(nameScena);
     }
 }

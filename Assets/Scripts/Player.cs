@@ -99,6 +99,7 @@ public class Player : MonoBehaviour
             }
 
         }
+
         if(isSlide){
             float tempSlide = (transform.position.z - slideStart) / slideHeight;
             if(tempSlide >= 1f){
@@ -109,11 +110,12 @@ public class Player : MonoBehaviour
                 isSlide=false;
             }
         }
+
         direction.y=jumpVelocity;
         controller.Move(direction * Time.deltaTime);
         OnCollision();//deve ser chamado o tempo todo
-        
-        
+
+
     }
 
     void Jump(){

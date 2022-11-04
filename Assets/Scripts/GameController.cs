@@ -22,10 +22,16 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.SetInt("PL", 0);
+        PlayerPrefs.SetInt("P", 0);
+        PlayerPrefs.SetInt("M",0);
+        PlayerPrefs.SetInt("O",0);
+        PlayerPrefs.SetInt("V",0);
+
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         uiController = FindObjectOfType<UIController>();
+        
     }
-
     void Update()
     {
         if(!player.isDie){
@@ -39,7 +45,6 @@ public class GameController : MonoBehaviour
                 speedAux = 40;
             }
             player.speed = speedAux;
-        
         }
     }
 

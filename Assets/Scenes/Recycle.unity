@@ -2087,6 +2087,11 @@ MonoBehaviour:
   - "Pl\xE1stico"
   - "Org\xE2nico"
   textType: {fileID: 1120202493}
+  textTrashP: {fileID: 447211586}
+  textTrashM: {fileID: 2014982538}
+  textTrashV: {fileID: 795997939}
+  textTrashPL: {fileID: 234972595}
+  textTrashO: {fileID: 1218135329}
 --- !u!4 &1596479463
 Transform:
   m_ObjectHideFlags: 0

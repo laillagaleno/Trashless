@@ -20,6 +20,10 @@ public class UIController : MonoBehaviour
     public Text textTrashPL;
     public Text textTrashO;
 
+     void Start(){
+       Debug.Log("stard");
+    }
+
     public void UpdateScore(float score){
         scoreText.text = Mathf.Round(score).ToString() + "m";
     }
@@ -40,18 +44,23 @@ public class UIController : MonoBehaviour
 
         if(trashLayer == "paper"){
             scoreTrashP++;
+            PlayerPrefs.SetInt("P",scoreTrashP);
             textTrashP.text = scoreTrashP.ToString();
         }else if(trashLayer == "metal"){
            scoreTrashM++;
+            PlayerPrefs.SetInt("M",scoreTrashM);
             textTrashM.text = scoreTrashM.ToString();
         } else if(trashLayer == "plastic"){
             scoreTrashPL++;
+            PlayerPrefs.SetInt("PL",scoreTrashPL);
             textTrashPL.text = scoreTrashPL.ToString();
         }else if(trashLayer == "glass"){
             scoreTrashV++;
+            PlayerPrefs.SetInt("V",scoreTrashV);
             textTrashV.text = scoreTrashV.ToString();
         }else if(trashLayer ==  "organic"){
             scoreTrashO++;
+            PlayerPrefs.SetInt("O",scoreTrashO);
             textTrashO.text = scoreTrashO.ToString();
         }
     }

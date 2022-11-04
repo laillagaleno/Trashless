@@ -12,6 +12,12 @@ public class RecycleController : MonoBehaviour
      public string[] textTypeTrash;
      public Text textType;
 
+    public Text textTrashP;
+    public Text textTrashM;
+    public Text textTrashV;
+    public Text textTrashPL;
+    public Text textTrashO;
+
     private int indexTrash;
     private int correctSelection;
 
@@ -22,6 +28,14 @@ public class RecycleController : MonoBehaviour
         correctSelection = 0;
         trash[indexTrash].SetActive(true);
         textType.text = textTypeTrash[indexTrash];
+
+        
+        textTrashP.text = PlayerPrefs.GetInt("P").ToString();
+        textTrashM.text = PlayerPrefs.GetInt("M").ToString();
+        textTrashPL.text = PlayerPrefs.GetInt("PL").ToString();
+        textTrashV.text = PlayerPrefs.GetInt("V").ToString();
+        textTrashO.text = PlayerPrefs.GetInt("O").ToString();
+
 
     }
 
