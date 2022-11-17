@@ -45,10 +45,10 @@
      <Compile Include="Assets/Scripts/MenuController.cs" />
      <Compile Include="Assets/Scripts/SpawnObstacles.cs" />
      <Compile Include="Assets/Scripts/NavScenes.cs" />
+     <Compile Include="Assets/Scripts/DataController.cs" />
      <Compile Include="Assets/Scripts/Platform.cs" />
      <Compile Include="Assets/Scripts/SpawnPlatform.cs" />
      <Compile Include="Assets/Scripts/Player.cs" />
-     <Compile Include="Assets/Scripts/DataController.cs" />
      <None Include="Assets/Fantasy Skybox FREE/Readme.txt" />
      <None Include="Assets/Fantasy Skybox FREE/ReleaseNotes.txt" />
      <None Include="Assets/Layout/Fonts/Mirza/OFL.txt" />

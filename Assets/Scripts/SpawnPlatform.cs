@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpawnPlatform : MonoBehaviour
 {
-
-    
     public List<GameObject> platforms = new List<GameObject>();
     //lista dos objetos instanciados
     public List<Transform> currentPlatforms = new List<Transform>();

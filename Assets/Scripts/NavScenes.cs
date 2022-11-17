@@ -8,10 +8,21 @@ public class NavScenes : MonoBehaviour
 {
     public AudioSource audioSourceClick;
     public string nameScena;
+    public string[] scene;
 
-    public void ButtonShowScena(string scene){
+    // public string level = MenuController.levelIndex.ToString();
+    public MenuController mc;
+    public int level;
+
+
+    void Start(){
+        level = mc.levelIndex;
+    }
+
+    public void ButtonShowScena(){
+        level = mc.levelIndex;
         audioSourceClick.Play();
-        nameScena = scene;
+        nameScena = scene[level];
         StartCoroutine("ShowScener");
     }
 

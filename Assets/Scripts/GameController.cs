@@ -20,6 +20,9 @@ public class GameController : MonoBehaviour
  
 
 
+    
+
+
     void Start()
     {
         PlayerPrefs.SetInt("PL", 0);
