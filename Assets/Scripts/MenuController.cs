@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
 public class MenuController : MonoBehaviour
 {
     // public static MenuController mc;
+
     
     public Text missionText;
     public Text sceneText;
@@ -21,6 +24,8 @@ public class MenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+// System.Environment.SetEnvironmentVariable("EMSDK_PYTHON", "/usr/bin/python2");
+      
         SelectionLevel(0);
     }
 

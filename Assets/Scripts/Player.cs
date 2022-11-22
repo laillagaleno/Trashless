@@ -48,8 +48,10 @@ public class Player : MonoBehaviour
     private UIController uiController;
  
 
-
-
+    //touch para mobile
+    private bool isSwipping = false;
+    private Vector2 startingTouch;
+    
     void Start(){
          player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -115,6 +117,45 @@ public class Player : MonoBehaviour
         controller.Move(direction * Time.deltaTime);
         OnCollision();//deve ser chamado o tempo todo
 
+        if(Input.touchCount == 1){
+            if(isSwipping){
+                Vector2 diff = Input.GetTouch(0).position - startingTouch;
+                diff = new Vector2(diff.x / Screen.width, diff.y / Screen.width);
+                if(diff.magnitude > 0.01f){
+                    if(Mathf.Abs(diff.y) > Mathf.Abs(diff.x)){
+                        if(diff.y < 0){
+                            Slide();
+                        }
+                        else{
+                            Jump();
+                        }
+                    }
+                    else{
+                        if(diff.x < 0 && transform.position.x>-1f && !isMovingLeft){
+                            //esquerda
+                            isMovingLeft = true;
+                            //chamada da co-rotina 
+                            StartCoroutine(LeftMove());
+                        }else if( transform.position.x<1f && !isMovingRight ){
+                            //direita
+                            //chamada da co-rotina 
+                            isMovingRight = true;
+                            StartCoroutine(RighMove());
+                        }
+                    }
+                    isSwipping = false;
+                }
+            }
+
+            if(Input.GetTouch(0).phase == TouchPhase.Began){
+                startingTouch = Input.GetTouch(0).position;
+                isSwipping = true;
+            }else if(Input.GetTouch(0).phase == TouchPhase.Ended){
+                isSwipping = false;
+            }
+        }
+
+      
 
     }
 
